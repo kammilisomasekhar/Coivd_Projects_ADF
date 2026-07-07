@@ -19,6 +19,10 @@
 			"type": "string",
 			"defaultValue": "https://dlprojectstrorage.dfs.core.windows.net/"
 		},
+		"Storage Events_properties_typeProperties_scope": {
+			"type": "string",
+			"defaultValue": "/subscriptions/ceac49aa-6e78-4024-931e-07e25263a010/resourceGroups/Project_Resource/providers/Microsoft.Storage/storageAccounts/blobcoived"
+		},
 		"containerUri": {
 			"type": "string",
 			"metadata": "URI to storage account containing linked ARM templates"
@@ -54,6 +58,9 @@
 					},
 					"Is_adls_covidreportingdl_properties_typeProperties_url": {
 						"value": "[parameters('Is_adls_covidreportingdl_properties_typeProperties_url')]"
+					},
+					"Storage Events_properties_typeProperties_scope": {
+						"value": "[parameters('Storage Events_properties_typeProperties_scope')]"
 					}
 				}
 			},
