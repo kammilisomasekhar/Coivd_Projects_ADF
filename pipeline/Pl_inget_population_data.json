@@ -5,7 +5,14 @@
 			{
 				"name": "Copy_population_Data",
 				"type": "Copy",
-				"dependsOn": [],
+				"dependsOn": [
+					{
+						"activity": "Check if file exits",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
 				"policy": {
 					"timeout": "0.00:55:00",
 					"retry": 0,
@@ -59,6 +66,38 @@
 						"type": "DatasetReference"
 					}
 				]
+			},
+			{
+				"name": "Check if file exits",
+				"type": "Validation",
+				"dependsOn": [],
+				"userProperties": [],
+				"typeProperties": {
+					"dataset": {
+						"referenceName": "dt_population_raw_gz",
+						"type": "DatasetReference"
+					},
+					"timeout": "0.00:00:50",
+					"sleep": 0,
+					"minimumSize": 1060
+				}
+			},
+			{
+				"name": "Fail1",
+				"type": "Fail",
+				"dependsOn": [
+					{
+						"activity": "Check if file exits",
+						"dependencyConditions": [
+							"Failed"
+						]
+					}
+				],
+				"userProperties": [],
+				"typeProperties": {
+					"message": "this piple faile",
+					"errorCode": "1232"
+				}
 			}
 		],
 		"annotations": []
