@@ -1,6 +1,7 @@
 {
 	"name": "Storage Events",
 	"properties": {
+		"description": "x",
 		"annotations": [],
 		"runtimeState": "Started",
 		"pipelines": [],
