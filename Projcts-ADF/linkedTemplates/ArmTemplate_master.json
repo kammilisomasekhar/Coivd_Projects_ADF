@@ -19,9 +19,9 @@
 			"type": "string",
 			"defaultValue": "https://dlprojectstrorage.dfs.core.windows.net/"
 		},
-		"Storage Events_properties_typeProperties_scope": {
+		"Is_http_opendata_ecdc_europa_eu_properties_typeProperties_url": {
 			"type": "string",
-			"defaultValue": "/subscriptions/ceac49aa-6e78-4024-931e-07e25263a010/resourceGroups/Project_Resource/providers/Microsoft.Storage/storageAccounts/blobcoived"
+			"defaultValue": "https://opendata.ecdc.europa.eu/"
 		},
 		"containerUri": {
 			"type": "string",
@@ -59,8 +59,8 @@
 					"Is_adls_covidreportingdl_properties_typeProperties_url": {
 						"value": "[parameters('Is_adls_covidreportingdl_properties_typeProperties_url')]"
 					},
-					"Storage Events_properties_typeProperties_scope": {
-						"value": "[parameters('Storage Events_properties_typeProperties_scope')]"
+					"Is_http_opendata_ecdc_europa_eu_properties_typeProperties_url": {
+						"value": "[parameters('Is_http_opendata_ecdc_europa_eu_properties_typeProperties_url')]"
 					}
 				}
 			},
