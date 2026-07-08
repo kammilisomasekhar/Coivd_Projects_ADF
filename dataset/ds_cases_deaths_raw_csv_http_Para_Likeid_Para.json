@@ -1,0 +1,39 @@
+{
+	"name": "ds_cases_deaths_raw_csv_http_Para_Likeid_Para",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "Is_Http_paramter",
+			"type": "LinkedServiceReference",
+			"parameters": {
+				"Base_URL": {
+					"value": "@dataset().base_URL",
+					"type": "Expression"
+				}
+			}
+		},
+		"parameters": {
+			"Source_Relative_URL": {
+				"type": "string"
+			},
+			"base_URL": {
+				"type": "string"
+			}
+		},
+		"annotations": [],
+		"type": "DelimitedText",
+		"typeProperties": {
+			"location": {
+				"type": "HttpServerLocation",
+				"relativeUrl": {
+					"value": "@dataset().Source_Relative_URL",
+					"type": "Expression"
+				}
+			},
+			"columnDelimiter": ",",
+			"escapeChar": "\\",
+			"firstRowAsHeader": true,
+			"quoteChar": "\""
+		},
+		"schema": []
+	}
+}
