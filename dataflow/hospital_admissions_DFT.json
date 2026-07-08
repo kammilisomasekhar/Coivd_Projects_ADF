@@ -45,6 +45,9 @@
 				},
 				{
 					"name": "aggDate"
+				},
+				{
+					"name": "joinwithdate"
 				}
 			],
 			"scriptLines": [
@@ -120,7 +123,12 @@
 				"DimDateSource derive(ecdc_year_week = year+'-W'+lpad(week_of_year,2,'0')) ~> derivedECDCYearWeek",
 				"derivedECDCYearWeek aggregate(groupBy(ecdc_year_week),",
 				"     week_start_date = min(date),",
-				"          week_end_Date = max(date)) ~> aggDate"
+				"          week_end_Date = max(date)) ~> aggDate",
+				"splitDailyfromweekly@weekly, aggDate join(Repoted_year_week == ecdc_year_week,",
+				"     joinType:'inner',",
+				"     matchType:'exact',",
+				"     ignoreSpaces: false,",
+				"     broadcast: 'auto')~> joinwithdate"
 			]
 		}
 	}
