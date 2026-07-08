@@ -42,6 +42,9 @@
 				},
 				{
 					"name": "derivedECDCYearWeek"
+				},
+				{
+					"name": "aggDate"
 				}
 			],
 			"scriptLines": [
@@ -114,7 +117,10 @@
 				"     skipDuplicateMapOutputs: true) ~> selectBothCountry",
 				"selectBothCountry split(indicator== 'Weekly new hospital admissions per 100k' || indicator=='Weekly new ICU admissions per 100k',",
 				"     disjoint: false) ~> splitDailyfromweekly@(weekly, Daily)",
-				"DimDateSource derive(ecdc_year_week = year+'-W'+lpad(week_of_year,2,'0')) ~> derivedECDCYearWeek"
+				"DimDateSource derive(ecdc_year_week = year+'-W'+lpad(week_of_year,2,'0')) ~> derivedECDCYearWeek",
+				"derivedECDCYearWeek aggregate(groupBy(ecdc_year_week),",
+				"     week_start_date = min(date),",
+				"          week_end_Date = max(date)) ~> aggDate"
 			]
 		}
 	}
