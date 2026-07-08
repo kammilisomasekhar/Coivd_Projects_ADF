@@ -1190,14 +1190,6 @@
 				"policy": {
 					"elapsedTimeMetric": {}
 				},
-				"variables": {
-					"sourceRelativeURL": {
-						"type": "String"
-					},
-					"sinkFileName": {
-						"type": "String"
-					}
-				},
 				"annotations": []
 			},
 			"dependsOn": [
@@ -1313,6 +1305,10 @@
 				"typeProperties": {
 					"location": {
 						"type": "AzureBlobFSLocation",
+						"fileName": {
+							"value": "@dataset().sinkFileName_DS",
+							"type": "Expression"
+						},
 						"folderPath": "ecdc",
 						"fileSystem": "raw"
 					},

@@ -364,14 +364,6 @@
 				"policy": {
 					"elapsedTimeMetric": {}
 				},
-				"variables": {
-					"sourceRelativeURL": {
-						"type": "String"
-					},
-					"sinkFileName": {
-						"type": "String"
-					}
-				},
 				"annotations": []
 			},
 			"dependsOn": []
