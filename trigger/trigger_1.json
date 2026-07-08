@@ -8,6 +8,10 @@
 				"pipelineReference": {
 					"referenceName": "PL_ingest_cases_death_data_Para",
 					"type": "PipelineReference"
+				},
+				"parameters": {
+					"Source_URL": "covid19/hospitalicuadmissionrates/csv/data.csv",
+					"Sink_File_name": "hospital_admission.csv"
 				}
 			}
 		],
