@@ -1,0 +1,17 @@
+{
+	"name": "is_http_3_paramter_",
+	"properties": {
+		"parameters": {
+			"sourceBaseURL_LK": {
+				"type": "string"
+			}
+		},
+		"annotations": [],
+		"type": "HttpServer",
+		"typeProperties": {
+			"url": "@{linkedService().sourceBaseURL_LK}",
+			"enableServerCertificateValidation": true,
+			"authenticationType": "Anonymous"
+		}
+	}
+}
