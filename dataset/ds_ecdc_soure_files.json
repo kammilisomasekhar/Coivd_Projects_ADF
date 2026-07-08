@@ -1,0 +1,42 @@
+{
+	"name": "ds_ecdc_soure_files",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "is_http_3_paramter_",
+			"type": "LinkedServiceReference",
+			"parameters": {
+				"sourceBaseURL_LK": {
+					"value": "@dataset().sourceBaseURL_DS",
+					"type": "Expression"
+				}
+			}
+		},
+		"parameters": {
+			"sourceBaseURL_DS": {
+				"type": "string"
+			},
+			"sourceRelativeURL_DS": {
+				"type": "string"
+			},
+			"sinkFileName_DS": {
+				"type": "string"
+			}
+		},
+		"annotations": [],
+		"type": "DelimitedText",
+		"typeProperties": {
+			"location": {
+				"type": "HttpServerLocation",
+				"relativeUrl": {
+					"value": "@dataset().sourceRelativeURL_DS",
+					"type": "Expression"
+				}
+			},
+			"columnDelimiter": ",",
+			"escapeChar": "\\",
+			"firstRowAsHeader": true,
+			"quoteChar": "\""
+		},
+		"schema": []
+	}
+}

@@ -1,0 +1,19 @@
+{
+	"name": "ds_ecdc_config_3_files_lists",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "Is_ablob_covidreportingsa",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "Json",
+		"typeProperties": {
+			"location": {
+				"type": "AzureBlobStorageLocation",
+				"fileName": "ecdc_file_list.json",
+				"container": "config"
+			}
+		},
+		"schema": {}
+	}
+}
