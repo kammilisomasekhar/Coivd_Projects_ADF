@@ -5,6 +5,11 @@
 			"referenceName": "Is_adls_covidreportingdl",
 			"type": "LinkedServiceReference"
 		},
+		"parameters": {
+			"sinkFileName_DS": {
+				"type": "string"
+			}
+		},
 		"annotations": [],
 		"type": "DelimitedText",
 		"typeProperties": {

@@ -17,9 +17,6 @@
 			},
 			"sourceRelativeURL_DS": {
 				"type": "string"
-			},
-			"sinkFileName_DS": {
-				"type": "string"
 			}
 		},
 		"annotations": [],
