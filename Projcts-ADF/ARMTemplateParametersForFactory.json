@@ -16,6 +16,9 @@
 		},
 		"Is_http_opendata_ecdc_europa_eu_properties_typeProperties_url": {
 			"value": "https://opendata.ecdc.europa.eu/"
+		},
+		"Is_Http_paramter_properties_typeProperties_url": {
+			"value": "@{linkedService().Base_URL}"
 		}
 	}
 }
