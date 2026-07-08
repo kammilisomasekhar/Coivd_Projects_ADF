@@ -15,6 +15,10 @@
 			"type": "secureString",
 			"metadata": "Secure string for 'accountKey' of 'Is_adls_covidreportingdl'"
 		},
+		"Is_Http_paramter_properties_typeProperties_url": {
+			"type": "string",
+			"defaultValue": "@{linkedService().Base_URL}"
+		},
 		"Is_adls_covidreportingdl_properties_typeProperties_url": {
 			"type": "string",
 			"defaultValue": "https://dlprojectstrorage.dfs.core.windows.net/"
@@ -22,10 +26,6 @@
 		"Is_http_opendata_ecdc_europa_eu_properties_typeProperties_url": {
 			"type": "string",
 			"defaultValue": "https://opendata.ecdc.europa.eu/"
-		},
-		"Is_Http_paramter_properties_typeProperties_url": {
-			"type": "string",
-			"defaultValue": "@{linkedService().Base_URL}"
 		},
 		"is_http_3_paramter__properties_typeProperties_url": {
 			"type": "string",
@@ -64,14 +64,14 @@
 					"Is_adls_covidreportingdl_accountKey": {
 						"value": "[parameters('Is_adls_covidreportingdl_accountKey')]"
 					},
+					"Is_Http_paramter_properties_typeProperties_url": {
+						"value": "[parameters('Is_Http_paramter_properties_typeProperties_url')]"
+					},
 					"Is_adls_covidreportingdl_properties_typeProperties_url": {
 						"value": "[parameters('Is_adls_covidreportingdl_properties_typeProperties_url')]"
 					},
 					"Is_http_opendata_ecdc_europa_eu_properties_typeProperties_url": {
 						"value": "[parameters('Is_http_opendata_ecdc_europa_eu_properties_typeProperties_url')]"
-					},
-					"Is_Http_paramter_properties_typeProperties_url": {
-						"value": "[parameters('Is_Http_paramter_properties_typeProperties_url')]"
 					},
 					"is_http_3_paramter__properties_typeProperties_url": {
 						"value": "[parameters('is_http_3_paramter__properties_typeProperties_url')]"
