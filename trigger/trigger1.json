@@ -3,24 +3,13 @@
 	"properties": {
 		"annotations": [],
 		"runtimeState": "Started",
-		"pipelines": [
-			{
-				"pipelineReference": {
-					"referenceName": "PL_ingest_cases_death_data_Para",
-					"type": "PipelineReference"
-				},
-				"parameters": {
-					"Source_URL": "covid19/hospitalicuadmissionrates/csv/data.csv",
-					"Sink_File_name": "hospital_admission.csv"
-				}
-			}
-		],
+		"pipelines": [],
 		"type": "ScheduleTrigger",
 		"typeProperties": {
 			"recurrence": {
 				"frequency": "Minute",
-				"interval": 1,
-				"startTime": "2026-07-08T05:43:00",
+				"interval": 2,
+				"startTime": "2026-07-08T05:46:00",
 				"timeZone": "India Standard Time"
 			}
 		}
