@@ -60,6 +60,12 @@
 				},
 				{
 					"name": "sortDaily"
+				},
+				{
+					"name": "selectWeekly"
+				},
+				{
+					"name": "select1"
 				}
 			],
 			"scriptLines": [
@@ -143,7 +149,9 @@
 				"     broadcast: 'auto')~> joinwithdate",
 				"joinwithdate pivot(groupBy(country,",
 				"          Repoted_year_week,",
-				"          source),",
+				"          source,",
+				"          week_start_date,",
+				"          week_end_Date),",
 				"     pivotBy(indicator, ['Weekly new hospital admissions per 100k', 'Weekly new ICU admissions per 100k']),",
 				"     count = sum(value),",
 				"     columnNaming: '$V -$N',",
@@ -158,7 +166,27 @@
 				"pivotweekly sort(desc(Repoted_year_week, true),",
 				"     asc(country, true)) ~> sortWeekly",
 				"pivotDaily sort(desc(Reported_date, true),",
-				"     asc(country, true)) ~> sortDaily"
+				"     asc(country, true)) ~> sortDaily",
+				"sortWeekly select(mapColumn(",
+				"          country,",
+				"          Repoted_year_week,",
+				"          week_start_date,",
+				"          week_end_Date,",
+				"          {New_hospital_Occupancy_Count -count} = {Weekly new hospital admissions per 100k -count},",
+				"          {New_ICU Occupancy_count} = {Weekly new ICU admissions per 100k -count},",
+				"          source",
+				"     ),",
+				"     skipDuplicateMapInputs: true,",
+				"     skipDuplicateMapOutputs: true) ~> selectWeekly",
+				"sortDaily select(mapColumn(",
+				"          country,",
+				"          Reported_date,",
+				"          hospital_occupancy_count = {Daily hospital occupancy -count},",
+				"          {ICU_occupancy _count} = {Daily ICU occupancy -count},",
+				"          source",
+				"     ),",
+				"     skipDuplicateMapInputs: true,",
+				"     skipDuplicateMapOutputs: true) ~> select1"
 			]
 		}
 	}
