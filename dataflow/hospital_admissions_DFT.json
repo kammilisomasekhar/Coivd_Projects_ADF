@@ -1,0 +1,88 @@
+{
+	"name": "hospital_admissions_DFT",
+	"properties": {
+		"type": "MappingDataFlow",
+		"typeProperties": {
+			"sources": [
+				{
+					"dataset": {
+						"referenceName": "DS_hospital_admissions_DFT",
+						"type": "DatasetReference"
+					},
+					"name": "SourceHospitalAdmission"
+				},
+				{
+					"dataset": {
+						"referenceName": "Ds_country_response",
+						"type": "DatasetReference"
+					},
+					"name": "CountrySource"
+				}
+			],
+			"sinks": [],
+			"transformations": [
+				{
+					"name": "SelectReqfeilds"
+				},
+				{
+					"name": "lookupCountry"
+				},
+				{
+					"name": "selectBothCountry"
+				}
+			],
+			"scriptLines": [
+				"source(output(",
+				"          country as string,",
+				"          indicator as string,",
+				"          date as date,",
+				"          year_week as string,",
+				"          value as double,",
+				"          source as string,",
+				"          url as string",
+				"     ),",
+				"     allowSchemaDrift: true,",
+				"     validateSchema: false,",
+				"     ignoreNoFilesFound: false,",
+				"     partitionBy('hash', 1)) ~> SourceHospitalAdmission",
+				"source(output(",
+				"          Country as string,",
+				"          Response_measure as string,",
+				"          change as short,",
+				"          date_start as date,",
+				"          date_end as string",
+				"     ),",
+				"     allowSchemaDrift: true,",
+				"     validateSchema: false,",
+				"     ignoreNoFilesFound: false) ~> CountrySource",
+				"SourceHospitalAdmission select(mapColumn(",
+				"          country,",
+				"          indicator,",
+				"          Reported_date = date,",
+				"          Repoted_year_week = year_week,",
+				"          value,",
+				"          source",
+				"     ),",
+				"     skipDuplicateMapInputs: true,",
+				"     skipDuplicateMapOutputs: true) ~> SelectReqfeilds",
+				"SelectReqfeilds, CountrySource lookup(SelectReqfeilds@country == CountrySource@Country,",
+				"     multiple: false,",
+				"     pickup: 'any',",
+				"     broadcast: 'auto')~> lookupCountry",
+				"lookupCountry select(mapColumn(",
+				"          country = SelectReqfeilds@country,",
+				"          indicator,",
+				"          Reported_date,",
+				"          Repoted_year_week,",
+				"          value,",
+				"          source,",
+				"          Response_measure,",
+				"          change",
+				"     ),",
+				"     partitionBy('hash', 1),",
+				"     skipDuplicateMapInputs: true,",
+				"     skipDuplicateMapOutputs: true) ~> selectBothCountry"
+			]
+		}
+	}
+}
