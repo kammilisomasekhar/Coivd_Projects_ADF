@@ -16,6 +16,24 @@
 		},
 		"Is_http_opendata_ecdc_europa_eu_properties_typeProperties_url": {
 			"value": "https://opendata.ecdc.europa.eu/"
+		},
+		"Schedule_Trigger_properties_PL_ingest_cases_death_data_Para_parameters_Source_URL": {
+			"value": "covid19/hospitalicuadmissionrates/csv/data.csv"
+		},
+		"Schedule_Trigger_properties_PL_ingest_cases_death_data_Para_parameters_Sink_File_name": {
+			"value": "hospital_admission.csv"
+		},
+		"trigger1_properties_PL_ingest_cases_death_data_Para_parameters_Source_URL": {
+			"value": "covid19/hospitalicuadmissionrates/csv/data.csv"
+		},
+		"trigger1_properties_PL_ingest_cases_death_data_Para_parameters_Sink_File_name": {
+			"value": "hospital_admission.csv"
+		},
+		"trigger_1_properties_PL_ingest_cases_death_data_Para_parameters_Source_URL": {
+			"value": "covid19/hospitalicuadmissionrates/csv/data.csv"
+		},
+		"trigger_1_properties_PL_ingest_cases_death_data_Para_parameters_Sink_File_name": {
+			"value": "hospital_admission.csv"
 		}
 	}
 }
