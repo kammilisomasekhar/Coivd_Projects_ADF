@@ -22,30 +22,6 @@
 		"Is_http_opendata_ecdc_europa_eu_properties_typeProperties_url": {
 			"type": "string",
 			"defaultValue": "https://opendata.ecdc.europa.eu/"
-		},
-		"Schedule_Trigger_properties_PL_ingest_cases_death_data_Para_parameters_Source_URL": {
-			"type": "string",
-			"defaultValue": "covid19/hospitalicuadmissionrates/csv/data.csv"
-		},
-		"Schedule_Trigger_properties_PL_ingest_cases_death_data_Para_parameters_Sink_File_name": {
-			"type": "string",
-			"defaultValue": "hospital_admission.csv"
-		},
-		"trigger1_properties_PL_ingest_cases_death_data_Para_parameters_Source_URL": {
-			"type": "string",
-			"defaultValue": "covid19/hospitalicuadmissionrates/csv/data.csv"
-		},
-		"trigger1_properties_PL_ingest_cases_death_data_Para_parameters_Sink_File_name": {
-			"type": "string",
-			"defaultValue": "hospital_admission.csv"
-		},
-		"trigger_1_properties_PL_ingest_cases_death_data_Para_parameters_Source_URL": {
-			"type": "string",
-			"defaultValue": "covid19/hospitalicuadmissionrates/csv/data.csv"
-		},
-		"trigger_1_properties_PL_ingest_cases_death_data_Para_parameters_Sink_File_name": {
-			"type": "string",
-			"defaultValue": "hospital_admission.csv"
 		}
 	},
 	"variables": {
@@ -758,106 +734,6 @@
 			"dependsOn": [
 				"[concat(variables('factoryId'), '/datasets/dt_population_raw_gz')]",
 				"[concat(variables('factoryId'), '/datasets/dt_population_raw_tsv')]"
-			]
-		},
-		{
-			"name": "[concat(parameters('factoryName'), '/Schedule_Trigger')]",
-			"type": "Microsoft.DataFactory/factories/triggers",
-			"apiVersion": "2018-06-01",
-			"properties": {
-				"annotations": [],
-				"runtimeState": "Started",
-				"pipelines": [
-					{
-						"pipelineReference": {
-							"referenceName": "PL_ingest_cases_death_data_Para",
-							"type": "PipelineReference"
-						},
-						"parameters": {
-							"Source_URL": "[parameters('Schedule_Trigger_properties_PL_ingest_cases_death_data_Para_parameters_Source_URL')]",
-							"Sink_File_name": "[parameters('Schedule_Trigger_properties_PL_ingest_cases_death_data_Para_parameters_Sink_File_name')]"
-						}
-					}
-				],
-				"type": "ScheduleTrigger",
-				"typeProperties": {
-					"recurrence": {
-						"frequency": "Minute",
-						"interval": 1,
-						"startTime": "2026-07-08T05:40:00",
-						"endTime": "2026-07-09T05:40:00",
-						"timeZone": "India Standard Time"
-					}
-				}
-			},
-			"dependsOn": [
-				"[concat(variables('factoryId'), '/pipelines/PL_ingest_cases_death_data_Para')]"
-			]
-		},
-		{
-			"name": "[concat(parameters('factoryName'), '/trigger1')]",
-			"type": "Microsoft.DataFactory/factories/triggers",
-			"apiVersion": "2018-06-01",
-			"properties": {
-				"annotations": [],
-				"runtimeState": "Started",
-				"pipelines": [
-					{
-						"pipelineReference": {
-							"referenceName": "PL_ingest_cases_death_data_Para",
-							"type": "PipelineReference"
-						},
-						"parameters": {
-							"Source_URL": "[parameters('trigger1_properties_PL_ingest_cases_death_data_Para_parameters_Source_URL')]",
-							"Sink_File_name": "[parameters('trigger1_properties_PL_ingest_cases_death_data_Para_parameters_Sink_File_name')]"
-						}
-					}
-				],
-				"type": "ScheduleTrigger",
-				"typeProperties": {
-					"recurrence": {
-						"frequency": "Minute",
-						"interval": 2,
-						"startTime": "2026-07-08T05:46:00",
-						"timeZone": "India Standard Time"
-					}
-				}
-			},
-			"dependsOn": [
-				"[concat(variables('factoryId'), '/pipelines/PL_ingest_cases_death_data_Para')]"
-			]
-		},
-		{
-			"name": "[concat(parameters('factoryName'), '/trigger_1')]",
-			"type": "Microsoft.DataFactory/factories/triggers",
-			"apiVersion": "2018-06-01",
-			"properties": {
-				"annotations": [],
-				"runtimeState": "Started",
-				"pipelines": [
-					{
-						"pipelineReference": {
-							"referenceName": "PL_ingest_cases_death_data_Para",
-							"type": "PipelineReference"
-						},
-						"parameters": {
-							"Source_URL": "[parameters('trigger_1_properties_PL_ingest_cases_death_data_Para_parameters_Source_URL')]",
-							"Sink_File_name": "[parameters('trigger_1_properties_PL_ingest_cases_death_data_Para_parameters_Sink_File_name')]"
-						}
-					}
-				],
-				"type": "ScheduleTrigger",
-				"typeProperties": {
-					"recurrence": {
-						"frequency": "Minute",
-						"interval": 1,
-						"startTime": "2026-07-08T05:41:00",
-						"timeZone": "India Standard Time"
-					}
-				}
-			},
-			"dependsOn": [
-				"[concat(variables('factoryId'), '/pipelines/PL_ingest_cases_death_data_Para')]"
 			]
 		}
 	]
