@@ -26,7 +26,22 @@
 					"name": "DimDateSource"
 				}
 			],
-			"sinks": [],
+			"sinks": [
+				{
+					"dataset": {
+						"referenceName": "DS_Processed_Hos_admin_Weekly",
+						"type": "DatasetReference"
+					},
+					"name": "sinkWeekly"
+				},
+				{
+					"dataset": {
+						"referenceName": "DS_Process_Hops_admin_Daliy",
+						"type": "DatasetReference"
+					},
+					"name": "sinkDaily"
+				}
+			],
 			"transformations": [
 				{
 					"name": "SelectReqfeilds"
@@ -65,7 +80,7 @@
 					"name": "selectWeekly"
 				},
 				{
-					"name": "select1"
+					"name": "selectDaliy"
 				}
 			],
 			"scriptLines": [
@@ -186,7 +201,21 @@
 				"          source",
 				"     ),",
 				"     skipDuplicateMapInputs: true,",
-				"     skipDuplicateMapOutputs: true) ~> select1"
+				"     skipDuplicateMapOutputs: true) ~> selectDaliy",
+				"selectWeekly sink(allowSchemaDrift: true,",
+				"     validateSchema: false,",
+				"     umask: 0022,",
+				"     preCommands: [],",
+				"     postCommands: [],",
+				"     skipDuplicateMapInputs: true,",
+				"     skipDuplicateMapOutputs: true) ~> sinkWeekly",
+				"selectDaliy sink(allowSchemaDrift: true,",
+				"     validateSchema: false,",
+				"     umask: 0022,",
+				"     preCommands: [],",
+				"     postCommands: [],",
+				"     skipDuplicateMapInputs: true,",
+				"     skipDuplicateMapOutputs: true) ~> sinkDaily"
 			]
 		}
 	}
