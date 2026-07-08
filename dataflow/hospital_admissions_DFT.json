@@ -29,6 +29,9 @@
 				},
 				{
 					"name": "selectBothCountry"
+				},
+				{
+					"name": "splitDailyfromweekly"
 				}
 			],
 			"scriptLines": [
@@ -81,7 +84,9 @@
 				"     ),",
 				"     partitionBy('hash', 1),",
 				"     skipDuplicateMapInputs: true,",
-				"     skipDuplicateMapOutputs: true) ~> selectBothCountry"
+				"     skipDuplicateMapOutputs: true) ~> selectBothCountry",
+				"selectBothCountry split(indicator== 'Weekly new hospital admissions per 100k' ||indicator=='Weekly new ICU admissions per 100k',",
+				"     disjoint: false) ~> splitDailyfromweekly@(weekly, Daily)"
 			]
 		}
 	}
