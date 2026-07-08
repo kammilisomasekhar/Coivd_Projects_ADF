@@ -19,6 +19,9 @@
 		},
 		"Is_Http_paramter_properties_typeProperties_url": {
 			"value": "@{linkedService().Base_URL}"
+		},
+		"is_http_3_paramter__properties_typeProperties_url": {
+			"value": "@{linkedService().sourceBaseURL_LK}"
 		}
 	}
 }
