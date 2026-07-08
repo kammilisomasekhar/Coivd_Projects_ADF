@@ -1,0 +1,18 @@
+{
+	"name": "Is_Http_paramter",
+	"properties": {
+		"parameters": {
+			"Base_URL": {
+				"type": "string",
+				"defaultValue": "https://www.ecdc.europa.eu"
+			}
+		},
+		"annotations": [],
+		"type": "HttpServer",
+		"typeProperties": {
+			"url": "@{linkedService().Base_URL}",
+			"enableServerCertificateValidation": true,
+			"authenticationType": "Anonymous"
+		}
+	}
+}
