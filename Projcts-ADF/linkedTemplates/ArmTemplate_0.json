@@ -462,6 +462,64 @@
 			]
 		},
 		{
+			"name": "[concat(parameters('factoryName'), '/DS_testing_database')]",
+			"type": "Microsoft.DataFactory/factories/datasets",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"linkedServiceName": {
+					"referenceName": "AzureSqlDatabase1",
+					"type": "LinkedServiceReference"
+				},
+				"annotations": [],
+				"type": "AzureSqlTable",
+				"schema": [
+					{
+						"name": "country",
+						"type": "varchar"
+					},
+					{
+						"name": "country_code",
+						"type": "varchar"
+					},
+					{
+						"name": "year_week",
+						"type": "varchar"
+					},
+					{
+						"name": "new_cases",
+						"type": "varchar"
+					},
+					{
+						"name": "tests_done",
+						"type": "varchar"
+					},
+					{
+						"name": "population",
+						"type": "varchar"
+					},
+					{
+						"name": "testing_rate",
+						"type": "varchar"
+					},
+					{
+						"name": "positivity_rate",
+						"type": "varchar"
+					},
+					{
+						"name": "testing_data_source",
+						"type": "varchar"
+					}
+				],
+				"typeProperties": {
+					"schema": "covid_reporting",
+					"table": "testing_1"
+				}
+			},
+			"dependsOn": [
+				"[concat(variables('factoryId'), '/linkedServices/AzureSqlDatabase1')]"
+			]
+		},
+		{
 			"name": "[concat(parameters('factoryName'), '/Ds_country_response')]",
 			"type": "Microsoft.DataFactory/factories/datasets",
 			"apiVersion": "2018-06-01",
@@ -698,30 +756,6 @@
 					"location": {
 						"type": "AzureBlobStorageLocation",
 						"fileName": "ecdc_file_list.json",
-						"container": "config"
-					}
-				},
-				"schema": {}
-			},
-			"dependsOn": [
-				"[concat(variables('factoryId'), '/linkedServices/Is_ablob_covidreportingsa')]"
-			]
-		},
-		{
-			"name": "[concat(parameters('factoryName'), '/ds_ecdc_config_file_list')]",
-			"type": "Microsoft.DataFactory/factories/datasets",
-			"apiVersion": "2018-06-01",
-			"properties": {
-				"linkedServiceName": {
-					"referenceName": "Is_ablob_covidreportingsa",
-					"type": "LinkedServiceReference"
-				},
-				"annotations": [],
-				"type": "Json",
-				"typeProperties": {
-					"location": {
-						"type": "AzureBlobStorageLocation",
-						"fileName": "ecdc_file_list_for_2_files.json",
 						"container": "config"
 					}
 				},
