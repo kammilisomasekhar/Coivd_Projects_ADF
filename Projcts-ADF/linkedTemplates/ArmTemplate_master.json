@@ -7,6 +7,10 @@
 			"metadata": "Data Factory name",
 			"defaultValue": "Projcts-ADF"
 		},
+		"AzureSqlDatabase1_password": {
+			"type": "secureString",
+			"metadata": "Secure string for 'password' of 'AzureSqlDatabase1'"
+		},
 		"Is_ablob_covidreportingsa_connectionString": {
 			"type": "secureString",
 			"metadata": "Secure string for 'connectionString' of 'Is_ablob_covidreportingsa'"
@@ -14,6 +18,18 @@
 		"Is_adls_covidreportingdl_accountKey": {
 			"type": "secureString",
 			"metadata": "Secure string for 'accountKey' of 'Is_adls_covidreportingdl'"
+		},
+		"AzureSqlDatabase1_properties_typeProperties_server": {
+			"type": "string",
+			"defaultValue": "coivdserver.database.windows.net"
+		},
+		"AzureSqlDatabase1_properties_typeProperties_database": {
+			"type": "string",
+			"defaultValue": "CoivdDB"
+		},
+		"AzureSqlDatabase1_properties_typeProperties_userName": {
+			"type": "string",
+			"defaultValue": "kammilisomu"
 		},
 		"Is_Http_paramter_properties_typeProperties_url": {
 			"type": "string",
@@ -58,11 +74,23 @@
 					"factoryName": {
 						"value": "[parameters('factoryName')]"
 					},
+					"AzureSqlDatabase1_password": {
+						"value": "[parameters('AzureSqlDatabase1_password')]"
+					},
 					"Is_ablob_covidreportingsa_connectionString": {
 						"value": "[parameters('Is_ablob_covidreportingsa_connectionString')]"
 					},
 					"Is_adls_covidreportingdl_accountKey": {
 						"value": "[parameters('Is_adls_covidreportingdl_accountKey')]"
+					},
+					"AzureSqlDatabase1_properties_typeProperties_server": {
+						"value": "[parameters('AzureSqlDatabase1_properties_typeProperties_server')]"
+					},
+					"AzureSqlDatabase1_properties_typeProperties_database": {
+						"value": "[parameters('AzureSqlDatabase1_properties_typeProperties_database')]"
+					},
+					"AzureSqlDatabase1_properties_typeProperties_userName": {
+						"value": "[parameters('AzureSqlDatabase1_properties_typeProperties_userName')]"
 					},
 					"Is_Http_paramter_properties_typeProperties_url": {
 						"value": "[parameters('Is_Http_paramter_properties_typeProperties_url')]"

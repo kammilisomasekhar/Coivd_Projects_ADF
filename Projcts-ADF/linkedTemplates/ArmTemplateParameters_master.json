@@ -5,11 +5,23 @@
 		"factoryName": {
 			"value": "Projcts-ADF"
 		},
+		"AzureSqlDatabase1_password": {
+			"value": ""
+		},
 		"Is_ablob_covidreportingsa_connectionString": {
 			"value": ""
 		},
 		"Is_adls_covidreportingdl_accountKey": {
 			"value": ""
+		},
+		"AzureSqlDatabase1_properties_typeProperties_server": {
+			"value": "coivdserver.database.windows.net"
+		},
+		"AzureSqlDatabase1_properties_typeProperties_database": {
+			"value": "CoivdDB"
+		},
+		"AzureSqlDatabase1_properties_typeProperties_userName": {
+			"value": "kammilisomu"
 		},
 		"Is_Http_paramter_properties_typeProperties_url": {
 			"value": "@{linkedService().Base_URL}"
